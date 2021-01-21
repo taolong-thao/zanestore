@@ -69,9 +69,7 @@
                      <div class="our-link">
                          <ul>
                              <li><a href="login.php"><i class="fa fa-user s_color"></i> My Account</a></li>
-                             <li><a href="#"><i class="fas fa-location-arrow"></i> Our location</a></li>
-                             <li><a href="contact-us.php"><i class="fas fa-headset"></i> Contact Us</a></li>
-                         </ul>
+                                                     </ul>
                      </div>
                  </div>
                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -143,36 +141,30 @@
 
                  <!-- Collect the nav links, forms, and other content for toggling -->
                  <div class="collapse navbar-collapse" id="navbar-menu">
-                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                         <li class="nav-item active"><a class="nav-link" href="index.php">Trang chủ</a></li>
-                         <li class="nav-item"><a class="nav-link" href="about.php">Giới Thiệu</a></li>
-                         <li class="dropdown">
-                             <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
-                             <ul class="dropdown-menu">
-                                 <li><a href="shop.php">Tất cả sản phẩm</a></li>
-                                 <li><a href="shop-detail.php">Thông tin sản phẩm</a></li>
-                                 <li><a href="cart.php">Giỏ hàng của tôi</a></li>
-                                 <li><a href="my-account.php">Tài Khoản của tôi</a></li>
-                                 <li><a href="wishlist.php">Các sản phẩm đã chọn</a></li>
-                             </ul>
-                         </li>
-                         <li class="nav-item"><a class="nav-link" href="gallery.php">Bộ Sưu Tập</a></li>
-                         <li class="nav-item"><a class="nav-link" href="contact-us.php">Liên Hệ với chúng tôi</a></li>
-                     </ul>
-                 </div>
+                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li class="nav-item active"><a class="nav-link" href="index.php">Trang chủ</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link" data-toggle="dropdown">SHOP</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="shop.php">Tất cả sản phẩm</a></li>
+                                <li><a href="cart.php">Giỏ hàng của tôi</a></li>
+                              
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
                  <!-- /.navbar-collapse -->
 
                  <!-- Start Atribute Navigation -->
                  <div class="attr-nav">
-                     <ul>
-                         <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                         <li class="side-menu"><a href="#">
-                                 <i class="fa fa-shopping-bag"></i>
-                                 <span class="badge">3</span>
-                                 <p>My Cart</p>
-                             </a></li>
-                     </ul>
-                 </div>
+                    <ul>
+                        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                        <li><a href="cart.php">
+                                <i class="fa fa-shopping-bag"></i>
+                                <p>My Cart</p>
+                            </a></li>
+                    </ul>
+                </div>
                  <!-- End Atribute Navigation -->
              </div>
              <!-- Start Side Menu -->
@@ -196,6 +188,7 @@
                              <p>1x - <span class="price">$40.00</span></p>
                          </li>
                          <li class="total">
+                         
                              <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
                              <span class="float-right"><strong>Total</strong>: $180.00</span>
                          </li>
@@ -222,22 +215,7 @@
      </form>
      <!-- End Top Search -->
 
-     <!-- Start All Title Box -->
-     <div class="all-title-box">
-         <div class="container">
-             <div class="row">
-                 <div class="col-lg-12">
-                     <h2>Shop</h2>
-                     <ul class="breadcrumb">
-                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                         <li class="breadcrumb-item active">Shop</li>
-                     </ul>
-                 </div>
-             </div>
-         </div>
-     </div>
-     <!-- End All Title Box -->
-
+    
 
      <!-- Start Shop Page  -->
      <div class="shop-box-inner">
@@ -247,15 +225,7 @@
                      <div class="right-product-box">
                          <div class="product-item-filter row">
                              <div class="col-12 col-sm-8 text-center text-sm-left">
-                                 <div class="toolbar-sorter-right">
-                                     <span>Sort by </span>
-                                     <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                                         <option data-display="Select">Nothing</option>
-                                         <option value="2">High Price → High Price</option>
-                                         <option value="3">Low Price → High Price</option>
-                                     </select>
-                                 </div>
-                                 <p>Showing all 4 results</p>
+                                
                              </div>
                              <div class="col-12 col-sm-4 text-center text-sm-right">
                                  <ul class="nav nav-tabs ml-auto">
@@ -287,7 +257,7 @@
                                                                  <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                                              </ul>
                                                              <?php $a=$row['viewsp'] ?>
-                                                             <a onclick="increment($a);" class="cart" href="shop-detail.php?namesp=<?php echo $row['namesp']?>&loaisp=<?php echo $row['loaisp']?>&viewsp=<?php echo $row['viewsp'] ?>">Add to Cart</a>
+                                                             <a name="addtocart" class="cart" href="shop-detail.php?namesp=<?php echo $row['namesp']?>&loaisp=<?php echo $row['loaisp']?>&viewsp=<?php echo $row['viewsp'] ?>">Add to Cart</a>
                                                          </div>
                                                      </div>
                                                      <div class="why-text">
@@ -403,20 +373,26 @@
                                          </div>
                                      </div>
                                  </div>
+                                 <div class="list-group-collapse sub-men">
+                                     <?php $result_sp = mysqli_query($mysqli, 'SELECT COUNT(*) as pricesp FROM giayboot');
+                                        $kq = mysqli_fetch_assoc($result_sp);
+                                        ?>
+                                     <a class="list-group-item list-group-item-action" href="#sub-men1" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">Nhà Sản Xuất<small class="text-muted"><?php echo '( ' . $kq['pricesp'] . ' )' ?></small>
+                                     </a>
+                                     <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
+                                         <div class="list-group">
+                                             <?php $result_cc = mysqli_query($mysqli, 'SELECT DISTINCT( nhasxsp) as nhasxsp FROM giayboot ');?>
+                                                <?php while($row=mysqli_fetch_array($result_cc)){
+                                                ?>
+                                            
+                                             <a href="#" name="clickpick" class="list-group-item list-group-item-action"><?php echo $row['nhasxsp']; ?></a>
+                                                        <?php }?>
+                                         </div>
+                                     </div>
+                                 </div>
                              </div>
                          </div>
-                         <div class="filter-price-left">
-                             <div class="title-left">
-                                 <h3>Price</h3>
-                             </div>
-                             <div class="price-box-slider">
-                                 <div id="slider-range"></div>
-                                 <p>
-                                     <input type="text" id="amount" readonly style="border:0; color:#fbb714; font-weight:bold;">
-                                     <button class="btn hvr-hover" type="submit">Filter</button>
-                                 </p>
-                             </div>
-                         </div>
+                        
                      </div>
                  </div>
              </div>

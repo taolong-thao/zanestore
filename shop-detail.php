@@ -1,232 +1,41 @@
 <?php
+require './fbconfig.php';
 $mysqli = new mysqli('localhost', 'root', '', 'resign') or die($mysqli->connect_error);
+
+if (isset($_GET['namesp']) && isset($_GET['imgsp']) && isset($_GET['pricesp']) && isset($_POST['soluongsp'])) {
+    $loaisp = $_GET['loaisp'];
+    $viewsp = $_GET['viewsp'];
+    $namesp = $_GET['namesp'];
+    $imgsp = $_GET['imgsp'];
+    $pricesp = $_GET['pricesp'];
+    $soluongsp = $_POST['soluongsp'];
+    $total = $pricesp * $soluongsp;
+    $username = $_SESSION['username'];
+    var_dump($username);
+    mysqli_query($mysqli, "INSERT INTO `cart`(`username`,  `namesp`, `imgsp`, `pricesp`, `soluongsp`, `total`) VALUES ('$username','$namesp','$imgsp','$pricesp','$soluongsp','$total')");
+    $temp = 'Location: shop-detail.php?namesp=' . $namesp . '&loaisp=' . $loaisp . '&viewsp=' . $viewsp;
+    header($temp);
+    exit();
+}
+
+
 $name = $_GET['namesp'];
 $sql = "SELECT * FROM giayboot where namesp='$name'";
-$theloai = $_REQUEST['loaisp'];
+$theloai = $_GET['loaisp'];
 $temp = "SELECT * FROM giayboot Where loaisp='$theloai'";
-$viewsp = $_REQUEST['viewsp'] + 1;
+$viewsp = $_GET['viewsp'] + 1;
 mysqli_query($mysqli, "UPDATE giayboot SET viewsp='$viewsp' WHERE namesp='$name'");
 $spkhac = mysqli_query($mysqli, $temp);
 $result = mysqli_query($mysqli, $sql);
 
 
+include 'header.php'
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<!-- Basic -->
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>ZANEStore -WE WILL ALLWAYS BESIDE YOU</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <link rel="shortcut icon" href="images/zane.jpg" type="image/x-icon">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/custom.css">
-
-
-</head>
-
-<body>
-    <!-- Start Main Top -->
-    <div class="main-top">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="custom-select-box">
-                        <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                            <option>đ VNĐ</option>
-                            <option>$ USD</option>
-                            <option>€ EUR</option>
-                        </select>
-                    </div>
-                    <div class="right-phone-box">
-                        <p>Call :- <a href="#"> 0933932056</a></p>
-                    </div>
-                    <div class="our-link">
-                        <ul>
-                            <li><a href="login.php"><i class="fa fa-user s_color"></i> My Account</a></li>
-                            <li><a href="#"><i class="fas fa-location-arrow"></i> Our location</a></li>
-                            <li><a href="contact-us.php"><i class="fas fa-headset"></i> Contact Us</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-
-                    <div class="login-box">
-                        <div class="login-box">
-                            <?php require './fbconfig.php'; ?>
-                            <?php if (isset($_SESSION['access_token'])) : ?>
-                                <a style="color:  #b0b435;" href="logout.php"> logout</a>
-                            <?php else : ?>
-                            <?php endif; ?>
-                        </div>
-                        <div class="login-box">
-                            <?php if (isset($_SESSION['username']))
-                                echo 'Hi  ' . $_SESSION['username'] . '  <a style="color:  #b0b435;" href="logout.php"> logout</a>' ?>
-
-                        </div>
-                        <div class="divname" <?php if (isset($_SESSION['username']) || isset($_SESSION['access_token'])) {
-                                                    echo " style='display: none'";
-                                                } ?>> <select onchange="if (this.value) window.location.href=this.value" id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
-                                <option value="resign.php">Register Here</option>
-                                <option value="login.php">Sign In</option>
-                            </select></div>
-
-                    </div>
-                    <div class="text-slid-box">
-                        <div id="offer-box" class="carouselTicker">
-                            <ul class="offer-box">
-                                <li>
-                                    <i class="fab fa-opencart"></i> Luôn tặng kèm Tất cho mỗi sản phẩm
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> SALE 30% - 50% Những mẫu lẻ size
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> Ưu đãi khách hàng thân thiết
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> Nhân Viên tư vấn nhiệt tình chu đáo
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> 1 đổi 1 trong 1 năm nếu sản phảm bị nổ da
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> Bảo dưỡng miễn phí chọn đời
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Main Top -->
-
-    <!-- Start Main Top -->
-    <header class="main-header">
-        <!-- Start Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
-            <div class="container">
-                <!-- Start Header Navigation -->
-                <div class="navbar-header">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <a class="navbar-brand" href="index.php"><img style="border-radius: 100px;" src="images/zane.jpg" alt="Avatar" class="avatar"></a>
-                </div>
-                <!-- End Header Navigation -->
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="navbar-menu">
-                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class="nav-item active"><a class="nav-link" href="index.php">Trang chủ</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.php">Giới Thiệu</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="shop.php">Tất cả sản phẩm</a></li>
-                                <li><a href="shop-detail.php">Thông tin sản phẩm</a></li>
-                                <li><a href="cart.php">Giỏ hàng của tôi</a></li>
-                                <li><a href="my-account.php">Tài Khoản của tôi</a></li>
-                                <li><a href="wishlist.php">Các sản phẩm đã chọn</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="gallery.php">Bộ Sưu Tập</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact-us.php">Liên Hệ với chúng tôi</a></li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-
-                <!-- Start Atribute Navigation -->
-                <div class="attr-nav">
-                    <ul>
-                        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                        <li class="side-menu"><a href="#">
-                                <i class="fa fa-shopping-bag"></i>
-                                <span class="badge">3</span>
-                                <p>My Cart</p>
-                            </a></li>
-                    </ul>
-                </div>
-                <!-- End Atribute Navigation -->
-            </div>
-            <!-- Start Side Menu -->
-            <div class="side">
-                <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                <li class="cart-box">
-                    <ul class="cart-list">
-                        <li>
-                            <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Delica omtantur </a></h6>
-                            <p>1x - <span class="price">$80.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Omnes ocurreret</a></h6>
-                            <p>1x - <span class="price">$60.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Agam facilisis</a></h6>
-                            <p>1x - <span class="price">$40.00</span></p>
-                        </li>
-                        <li class="total">
-                            <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                            <span class="float-right"><strong>Total</strong>: $180.00</span>
-                        </li>
-                    </ul>
-                </li>
-            </div>
-            <!-- End Side Menu -->
-        </nav>
-        <!-- End Navigation -->
-    </header>
-    <!-- End Main Top -->
-
-    <!-- Start Top Search -->
-    <div class="top-search">
-        <div class="container">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                <input type="text" class="form-control" placeholder="Search">
-                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-            </div>
-        </div>
-    </div>
-    <!-- End Top Search -->
-
-    <!-- Start All Title Box -->
-    <div class="all-title-box">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2>Shop Detail</h2>
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                        <li class="breadcrumb-item active">Shop Detail </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End All Title Box -->
 
     <!-- Start Shop Detail  -->
     <div class="shop-detail-box-main">
         <div class="container">
-         <?php while ($row = mysqli_fetch_array($result)) { ?>
+            <?php while ($row = mysqli_fetch_array($result)) { ?>
                 <div class="row">
                     <div class="col-xl-5 col-lg-5 col-md-6">
                         <div id="carousel-example-1" class="single-product-slider carousel slide" data-ride="carousel">
@@ -256,52 +65,53 @@ $result = mysqli_query($mysqli, $sql);
                             </ol>
                         </div>
                     </div>
-                    <form enctype='multipart/form-data' action="addtocart.php" method="POST">
+                    <form enctype='multipart/form-data' action="shop-detail.php?namesp=<?php echo $row['namesp']; ?>&pricesp=<?php echo $row['pricesp']; ?>&imgsp=<?php echo $row['imgsp']; ?>&loaisp=<?php echo $row['loaisp']; ?>&viewsp=<?php echo $row['viewsp']; ?>" method="POST">
 
-                    <div class="col-xl-7 col-lg-7 col-md-6">
-                        <div class="single-product-details">
-                            <h2 name="namesp"><?php echo $row['namesp'] ?> </h2>
-                            </h2>
-                            <h5><?php $i = $row['pricesp'];
+                        <div class="col-xl-7 col-lg-7 col-md-6">
+                            <div class="single-product-details">
+                                <h2 name="namesp"><?php echo $row['namesp'] ?> </h2>
+                                </h2>
+                                <h5><?php $i = $row['pricesp'];
                                     echo $o = number_format($i, 0); ?></h5>
-                            <p class="available-stock"><span> More than 20 available / <a href="#">8 sold </a></span>
-                            <p>
-                            <h4>Mô Tả Sản Phẩm:</h4>
-                            <p><?php echo $row['motasp'] ?>. </p>
-                            <ul>
-                                <li>
-                                    <div class="form-group quantity-box">
-                                        <label class="control-label">Số Lượng:</label>
-                                        <input name="soluongsp" class="form-control" value="0" min="0" max="20" type="number">
+                                <p class="available-stock"><span> More than 20 available / <a href="#">8 sold </a></span>
+                                <p>
+                                <h4>Mô Tả Sản Phẩm:</h4>
+                                <p><?php echo $row['motasp'] ?>. </p>
+                                <ul>
+                                    <li>
+                                        <div class="form-group quantity-box">
+                                            <label class="control-label">Số Lượng:</label>
+                                            <input name="soluongsp" id="soluongsp" class="form-control" value="0" min="0" max="20" type="number">
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <div class="price-box-bar">
+                                    <div class="cart-and-bay-btn">
+                                        <button class="btn hvr-hover submit" data-fancybox-close="">Add to cart</button>
                                     </div>
-                                </li>
-                            </ul>
-
-                            <div class="price-box-bar">
-                                <div class="cart-and-bay-btn">
-                                    <a class="btn hvr-hover" data-fancybox-close="" href="#">Buy New</a>
-                                    <button class="btn hvr-hover" data-fancybox-close="" href="#">Add to cart</button>
                                 </div>
-                            </div>
 
-                            <div class="add-to-btn">
-                                <div class="add-comp">
-                                    <a class="btn hvr-hover" href="#"><i class="fas fa-heart"></i> Add to wishlist</a>
-                                    <a class="btn hvr-hover" href="#"><i class="fas fa-sync-alt"></i> Add to Compare</a>
-                                </div>
-                                <div class="share-bar">
-                                    <a class="btn hvr-hover" href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a>
-                                    <a class="btn hvr-hover" href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a>
-                                    <a class="btn hvr-hover" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                                    <a class="btn hvr-hover" href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
-                                    <a class="btn hvr-hover" href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+
+
+                                <div class="add-to-btn">
+                                    <div class="add-comp">
+                                        <a class="btn hvr-hover" href="#"><i class="fas fa-heart"></i> Add to wishlist</a>
+                                        <a class="btn hvr-hover" href="#"><i class="fas fa-sync-alt"></i> Add to Compare</a>
+                                    </div>
+                                    <div class="share-bar">
+                                        <a class="btn hvr-hover" href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                                        <a class="btn hvr-hover" href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a>
+                                        <a class="btn hvr-hover" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                                        <a class="btn hvr-hover" href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
+                                        <a class="btn hvr-hover" href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </form>
                 </div><?php } ?>
-               
+
 
             <div class="row my-5">
                 <div class="card card-outline-secondary my-4">

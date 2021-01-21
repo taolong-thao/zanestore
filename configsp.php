@@ -13,7 +13,9 @@
         $giasp=$_POST['giasp'];
         $motasp=$_POST['motasp'];
         $xuatsusp=$_POST['xuatsusp'];
-        $nhasx=$_POST['nhasx'];        
+        $nhasx=$_POST['nhasx'];       
+        
+        
 
        $tmp_name=$_FILES['imagepro']['tmp_name'];
        $anh=$_FILES['imagepro']['name'];

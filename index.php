@@ -1,7 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <!-- Basic -->
+<?php require './fbconfig.php'; ?>
 
 <head>
     <meta charset="utf-8">
@@ -14,8 +14,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="shortcut icon"  href="images/zane.jpg" type="image/x-icon">
-    <link rel="apple-touch-icon"  href="images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="images/zane.jpg" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -34,18 +34,20 @@
                     <div class="our-link">
                         <ul>
                             <li><a href="login.php"><i class="fa fa-user s_color"></i> My Account</a></li>
-                            <li><a href="#"><i class="fas fa-location-arrow"></i> Our location</a></li>
-                            <li id="admin" style='display:none;'  <?php if (isset($_SESSION['username']) || isset($_SESSION['access_token'])) {
-                                                    echo "<script> document.getElementById('admin').style.display='block'; </script>";
-                                                } ?> ><a href="admin.php"><i class="fas fa-headset"></i> Quản Lý SHOP</a></li>
+                            <?php 
+                            if ($_SESSION['username']=='admin') {
+                                echo "<a href=" . 'admin.php' . " style=".'color:red;visibility: hidden;'.">Quản Lý Shop</a>";
+                            }
+                           
+                            ?>
                         </ul>
+
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 
-                    <div class="login-box">
+                    <div  class="login-box">
                         <div class="login-box">
-                            <?php require './fbconfig.php'; ?>
                             <?php if (isset($_SESSION['access_token'])) : ?>
                                 <a style="color:  #b0b435;" href="logout.php"> logout</a>
                             <?php else : ?>
@@ -60,38 +62,36 @@
                                                     echo " style='display: none'";
                                                 } ?>> <select onchange="if (this.value) window.location.href=this.value" id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
                                 <option value="resign.php">Register Here</option>
-                                <option  value="login.php">Sign In</option>
+                                <option value="login.php">Sign In</option>
                             </select></div>
 
-                    </div
-                   
-                    <div class="text-slid-box">
-                        <div id="offer-box" class="carouselTicker">
-                            <ul class="offer-box">
-                                <li>
-                                    <i class="fab fa-opencart"></i> Luôn tặng kèm Tất cho mỗi sản phẩm
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> SALE 30% - 50% Những mẫu lẻ size
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> Ưu đãi khách hàng thân thiết
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> Nhân Viên tư vấn nhiệt tình chu đáo
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> 1 đổi 1 trong 1 năm nếu sản phảm bị nổ da
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> Bảo dưỡng miễn phí chọn đời
-                                </li>
-                            </ul>
-                        </div>
+                    </div <div class="text-slid-box">
+                    <div id="offer-box" class="carouselTicker">
+                        <ul class="offer-box">
+                            <li>
+                                <i class="fab fa-opencart"></i> Luôn tặng kèm Tất cho mỗi sản phẩm
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> SALE 30% - 50% Những mẫu lẻ size
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> Ưu đãi khách hàng thân thiết
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> Nhân Viên tư vấn nhiệt tình chu đáo
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> 1 đổi 1 trong 1 năm nếu sản phảm bị nổ da
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> Bảo dưỡng miễn phí chọn đời
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!-- End Main Top -->
 
@@ -113,65 +113,24 @@
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                         <li class="nav-item active"><a class="nav-link" href="index.php">Trang chủ</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.php">Giới Thiệu</a></li>
                         <li class="dropdown">
-                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
+                            <a href="#" class="nav-link" data-toggle="dropdown">SHOP</a>
                             <ul class="dropdown-menu">
                                 <li><a href="shop.php">Tất cả sản phẩm</a></li>
-                                <li><a href="shop-detail.php">Thông tin sản phẩm</a></li>
                                 <li><a href="cart.php">Giỏ hàng của tôi</a></li>
-                                <li><a href="my-account.php">Tài Khoản của tôi</a></li>
-                                <li><a href="wishlist.php">Các sản phẩm đã chọn</a></li>
+                              
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="gallery.php">Bộ Sưu Tập</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact-us.php">Liên Hệ với chúng tôi</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
 
                 <!-- Start Atribute Navigation -->
-                <div class="attr-nav">
-                    <ul>
-                        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                        <li class="side-menu">
-                            <a href="#">
-                                <i class="fa fa-shopping-bag"></i>
-                                <span class="badge">3</span>
-                                <p>Giỏ hàng của tôi</p>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+              
                 <!-- End Atribute Navigation -->
             </div>
             <!-- Start Side Menu -->
-            <div class="side">
-                <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                <li class="cart-box">
-                    <ul class="cart-list">
-                        <li>
-                            <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Delica omtantur </a></h6>
-                            <p>1x - <span class="price">$80.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Omnes ocurreret</a></h6>
-                            <p>1x - <span class="price">$60.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Agam facilisis</a></h6>
-                            <p>1x - <span class="price">$40.00</span></p>
-                        </li>
-                        <li class="total">
-                            <a href="cart.html" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                            <span class="float-right"><strong>Total</strong>: $180.00</span>
-                        </li>
-                    </ul>
-                </li>
-            </div>
+
             <!-- End Side Menu -->
         </nav>
         <!-- End Navigation -->
@@ -210,7 +169,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>ZaneStore <br> SALE MẠNHHHHH!</strong></h1>
+                            <h1 class="m-b-20"><strong>ZaneStore <br> SALE MẠNHHHHH!</strong></h1>
                             <p class="m-b-40">ƯU ĐÃI CUỐI NĂM! GIẢM GIÁ SẬP SÀN</p>
                             <p><a class="btn hvr-hover" href="#">Shop New</a></p>
                         </div>
@@ -222,7 +181,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>TOP MẪU GIÀY ĐẸP NHẤT</strong></h1>
+                            <h1 class="m-b-20"><strong>TOP MẪU GIÀY ĐẸP NHẤT</strong></h1>
                             <p class="m-b-40">THƯỜNG XUYÊN CẬP NHẬT MẪU MỚI</p>
                             <p><a class="btn hvr-hover" href="#">Shop New</a></p>
                         </div>
@@ -369,7 +328,7 @@
                         </div>
                         <div class="why-text">
                             <h4>Chukka</h4>
-                            <h5> $10.79</h5>
+                            <h5> 1.900.000đ</h5>
                         </div>
                     </div>
                 </div>
@@ -380,7 +339,7 @@
                             <div class="type-lb">
                                 <p class="sale">HOT</p>
                             </div>
-                            <img src="images/1461full.jpg" class="img-fluid" alt="Image">
+                            <img src="images/giay10.jpg" class="img-fluid" alt="Image">
                             <div class="mask-icon">
                                 <ul>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -392,7 +351,7 @@
                         </div>
                         <div class="why-text">
                             <h4>Dr 1461 FullBlack</h4>
-                            <h5> $15.79</h5>
+                            <h5> 2.100.000đ</h5>
                         </div>
                     </div>
                 </div>
@@ -401,24 +360,24 @@
     </div>
     <!-- End Products  -->
 
-   
+
 
 
     <!-- Start Instagram Feed  -->
     <div class="instagram-box">
         <div class="main-instagram owl-carousel owl-theme">
-             <?php   $mysqli=new mysqli('localhost','root','','resign') or die($mysqli->connect_error);?>   
+            <?php $mysqli = new mysqli('localhost', 'root', '', 'resign') or die($mysqli->connect_error); ?>
 
-        <?php     $result3=mysqli_query($mysqli,'SELECT* FROM giayboot') ?>
-                    <?php while($rowss=mysqli_fetch_array($result3)):?>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/<?php echo $rowss['imgsp'] ?>" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+            <?php $result3 = mysqli_query($mysqli, 'SELECT* FROM giayboot') ?>
+            <?php while ($rowss = mysqli_fetch_array($result3)) : ?>
+                <div class="item">
+                    <div class="ins-inner-box">
+                        <img src="images/<?php echo $rowss['imgsp'] ?>" alt="" />
+                        <div class="hov-in">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
                     </div>
-                </div>
-            </div><?php endwhile;?>
+                </div><?php endwhile; ?>
         </div>
     </div>
     <!-- End Instagram Feed  -->
@@ -507,12 +466,12 @@
     <!-- Start copyright  -->
     <div class="footer-copyright">
         <p class="footer-company">All Rights Reserved. &copy; 2021 <a href="#">ZaneStore</a> Design By :
-            <a href="https://www.facebook.com/">Trần Long</a></p>
+            <a href="https://www.facebook.com/">Trần Long</a>
+        </p>
     </div>
     <!-- End copyright  -->
 
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
-
     <!-- ALL JS FILES -->
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/popper.min.js"></script>

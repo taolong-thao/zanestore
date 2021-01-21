@@ -1,205 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<!-- Basic -->
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>ZANEStore -WE WILL ALLWAYS BESIDE YOU</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <link rel="shortcut icon" href="images/zane.jpg" type="image/x-icon">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/custom.css">
-    <link rel="stylesheet" href="css/dialog-box.css">
-</head>
-
-<body>
-    <!-- Start Main Top -->
-    <div class="main-top">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-
-                    <div class="our-link">
-                        <ul>
-                            <li><a href="login.php"><i class="fa fa-user s_color"></i> My Account</a></li>
-                            <li><a href="#"><i class="fas fa-location-arrow"></i> Our location</a></li>
-                            <li><a href="contact-us.php"><i class="fas fa-headset"></i> Contact Us</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-
-                    <div class="login-box">
-                        <div class="login-box">
-                            <?php require './fbconfig.php'; ?>
-                            <?php if (isset($_SESSION['access_token'])) : ?>
-                                <a style="color:  #b0b435;" href="logout.php"> logout</a>
-                            <?php else : ?>
-                            <?php endif; ?>
-                        </div>
-                        <div class="login-box">
-                            <?php if (isset($_SESSION['username']))
-                                echo 'Hi  ' . $_SESSION['username'] . '  <a style="color:  #b0b435;" href="logout.php"> logout</a>' ?>
-
-                        </div>
-                        <div class="divname" <?php if (isset($_SESSION['username']) || isset($_SESSION['access_token'])) {
-                                                    echo " style='display: none'";
-                                                } ?>> <select onchange="if (this.value) window.location.href=this.value" id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
-                                <option value="resign.php">Register Here</option>
-                                <option value="login.php">Sign In</option>
-                            </select></div>
-
-                    </div>
-                    <div class="text-slid-box">
-                        <div id="offer-box" class="carouselTicker">
-                            <ul class="offer-box">
-                                <li>
-                                    <i class="fab fa-opencart"></i> Luôn tặng kèm Tất cho mỗi sản phẩm
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> SALE 30% - 50% Những mẫu lẻ size
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> Ưu đãi khách hàng thân thiết
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> Nhân Viên tư vấn nhiệt tình chu đáo
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> 1 đổi 1 trong 1 năm nếu sản phảm bị nổ da
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> Bảo dưỡng miễn phí chọn đời
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Main Top -->
-
-    <!-- Start Main Top -->
-    <header id="headerid" class="main-header">
-        <!-- Start Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
-            <div class="container">
-                <!-- Start Header Navigation -->
-                <div class="navbar-header">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <a class="navbar-brand" href="index.php"><img style="border-radius: 100px;" src="images/zane.jpg" alt="Avatar" class="avatar"></a>
-                </div>
-                <!-- End Header Navigation -->
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="navbar-menu">
-                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class="nav-item active"><a class="nav-link" href="index.php">Trang chủ</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.php">Giới Thiệu</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="shop.php">Tất cả sản phẩm</a></li>
-                                <li><a href="shop-detail.php">Thông tin sản phẩm</a></li>
-                                <li><a href="cart.php">Giỏ hàng của tôi</a></li>
-                                <li><a href="my-account.php">Tài Khoản của tôi</a></li>
-                                <li><a href="wishlist.php">Các sản phẩm đã chọn</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="gallery.php">Bộ Sưu Tập</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact-us.php">Liên Hệ với chúng tôi</a></li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-
-                <!-- Start Atribute Navigation -->
-                <div class="attr-nav">
-                    <ul>
-                        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                        <li class="side-menu"><a href="#">
-                                <i class="fa fa-shopping-bag"></i>
-                                <span class="badge">3</span>
-                                <p>My Cart</p>
-                            </a></li>
-                    </ul>
-                </div>
-                <!-- End Atribute Navigation -->
-            </div>
-            <!-- Start Side Menu -->
-            <div class="side">
-                <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                <li class="cart-box">
-                    <ul class="cart-list">
-                        <li>
-                            <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Delica omtantur </a></h6>
-                            <p>1x - <span class="price">$80.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Omnes ocurreret</a></h6>
-                            <p>1x - <span class="price">$60.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Agam facilisis</a></h6>
-                            <p>1x - <span class="price">$40.00</span></p>
-                        </li>
-                        <li class="total">
-                            <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                            <span class="float-right"><strong>Total</strong>: $180.00</span>
-                        </li>
-                    </ul>
-                </li>
-            </div>
-            <!-- End Side Menu -->
-        </nav>
-        <!-- End Navigation -->
-    </header>
-    <!-- End Main Top -->
-
-    <!-- Start Top Search -->
-    <div class="top-search">
-        <div class="container">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                <input type="text" class="form-control" placeholder="Search">
-                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-            </div>
-        </div>
-    </div>
-    <!-- End Top Search -->
-
-    <!-- Start All Title Box -->
-    <div class="all-title-box">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2>My Account</h2>
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                        <li class="breadcrumb-item active">My Account</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End All Title Box -->
-
+<?php 
+include 'header.php'
+?>
     <!-- Start My Account  -->
     <div class="my-account-box-main">
         <div class="container">
@@ -225,7 +26,7 @@
                                     <a onclick="muticlick1()" href="#"><i class="fas fa-trash-alt"></i> </a>
                                 </div>
                                 <div class="service-desc">
-                                    <h4>Xóa sản phẩm</h4>
+                                    <h4>Xóa,Update sản phẩm</h4>
                                     <p>xóa những mặt hàng không cần thiết</p>
                                 </div>
                             </div>
@@ -235,10 +36,10 @@
                         <div class="account-box">
                             <div class="service-box">
                                 <div class="service-icon">
-                                    <a href="#"> <i class="fas fa-edit"></i> </a>
+                                    <a onclick="muticlick2()" href="#"> <i class="fas fa-edit"></i> </a>
                                 </div>
                                 <div class="service-desc">
-                                    <h4>Update Sản Phẩm</h4>
+                                    <h4>Liệt Kê Sản Phẩm</h4>
                                     <p>Edit addresses for orders and gifts</p>
                                 </div>
                             </div>
@@ -248,7 +49,7 @@
                         <div class="account-box">
                             <div class="service-box">
                                 <div class="service-icon">
-                                    <a href="#"> <i class="fa fa-credit-card"></i> </a>
+                                    <a onclick="muticlickloaisp()" href="#"> <i class="fa fa-credit-card"></i> </a>
                                 </div>
                                 <div class="service-desc">
                                     <h4>Thêm Loại sản phẩm</h4>
@@ -261,7 +62,7 @@
                         <div class="account-box">
                             <div class="service-box">
                                 <div class="service-icon">
-                                    <a href="#"> <i class="fab fa-paypal"></i> </a>
+                                    <a onclick=" muticlickxoaloaisp()" href="#"> <i class="fab fa-paypal"></i> </a>
                                 </div>
                                 <div class="service-desc">
                                     <h4>Xóa loại sản phẩm</h4>
@@ -274,10 +75,10 @@
                         <div class="account-box">
                             <div class="service-box">
                                 <div class="service-icon">
-                                    <a href="#"> <i class="fab fa-amazon"></i> </a>
+                                    <a onclick="muticlicklietkeloaisp() " href="#"> <i class="fab fa-amazon"></i> </a>
                                 </div>
                                 <div class="service-desc">
-                                    <h4>Update loại sản phẩm</h4>
+                                    <h4>Liệt Kê loại sản phẩm</h4>
                                     <p>Add money to your balance</p>
                                 </div>
                             </div>
@@ -287,7 +88,7 @@
                         <div class="account-box">
                             <div class="service-box">
                                 <div class="service-icon">
-                                    <a href="#"> <i class="fa fa-credit-card"></i> </a>
+                                    <a onclick="muticlicknhasx()" href="#"> <i class="fa fa-credit-card"></i> </a>
                                 </div>
                                 <div class="service-desc">
                                     <h4>Thêm nhà sản xuất</h4>
@@ -300,7 +101,7 @@
                         <div class="account-box">
                             <div class="service-box">
                                 <div class="service-icon">
-                                    <a href="#"> <i class="fab fa-paypal"></i> </a>
+                                    <a onclick=" muticlickxoanhasx()" href="#"> <i class="fab fa-paypal"></i> </a>
                                 </div>
                                 <div class="service-desc">
                                     <h4>Xóa nhà sản xuất</h4>
@@ -313,59 +114,23 @@
                         <div class="account-box">
                             <div class="service-box">
                                 <div class="service-icon">
-                                    <a href="#"> <i class="fab fa-amazon"></i> </a>
+                                    <a onclick="muticlickkietkenhasx()" href="#"> <i class="fab fa-amazon"></i> </a>
                                 </div>
                                 <div class="service-desc">
-                                    <h4>Update nhà sản xuất</h4>
+                                    <h4>Liệt Kê nhà sản xuất</h4>
                                     <p>Add money to your balance</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                  
+                  
+                  
                     <div class="col-lg-4 col-md-12">
                         <div class="account-box">
                             <div class="service-box">
                                 <div class="service-icon">
-                                    <a href="#"> <i class="fa fa-credit-card"></i> </a>
-                                </div>
-                                <div class="service-desc">
-                                    <h4>Thêm đơn đặt hàng</h4>
-                                    <p>Edit or add payment methods</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="account-box">
-                            <div class="service-box">
-                                <div class="service-icon">
-                                    <a href="#"> <i class="fab fa-paypal"></i> </a>
-                                </div>
-                                <div class="service-desc">
-                                    <h4>Xóa đơn đặt hàng</h4>
-                                    <p>View benefits and payment settings</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="account-box">
-                            <div class="service-box">
-                                <div class="service-icon">
-                                    <a href="#"> <i class="fab fa-amazon"></i> </a>
-                                </div>
-                                <div class="service-desc">
-                                    <h4>Update đơn đặt hàng</h4>
-                                    <p>Add money to your balance</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="account-box">
-                            <div class="service-box">
-                                <div class="service-icon">
-                                    <a href="#"> <i class="fa fa-credit-card"></i> </a>
+                                    <a onclick="muticlicknguoidung()" href="#"> <i class="fa fa-credit-card"></i> </a>
                                 </div>
                                 <div class="service-desc">
                                     <h4>Thêm Người dùng</h4>
@@ -378,7 +143,7 @@
                         <div class="account-box">
                             <div class="service-box">
                                 <div class="service-icon">
-                                    <a href="#"> <i class="fab fa-paypal"></i> </a>
+                                    <a onclick=" muticlickdelmember()" href="#"> <i class="fab fa-paypal"></i> </a>
                                 </div>
                                 <div class="service-desc">
                                     <h4>Xóa Người Dùng</h4>
@@ -391,10 +156,10 @@
                         <div class="account-box">
                             <div class="service-box">
                                 <div class="service-icon">
-                                    <a href="#"> <i class="fab fa-amazon"></i> </a>
+                                    <a onclick="muticlickdelmember()" href="#"> <i class="fab fa-amazon"></i> </a>
                                 </div>
                                 <div class="service-desc">
-                                    <h4>Update Người Dùng</h4>
+                                    <h4>Liệt Kê Người Dùng</h4>
                                     <p>Add money to your balance</p>
                                 </div>
                             </div>
@@ -408,89 +173,21 @@
 
     <!-- Start Instagram Feed  -->
     <div class="instagram-box">
-        <div class="main-instagram owl-carousel owl-theme">
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-01.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-02.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-03.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-04.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-05.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-06.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-07.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-08.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-09.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-05.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+         <div class="main-instagram owl-carousel owl-theme">
+             <?php
+             $con =mysqli_connect('localhost','root','','resign') or die($con->connect_error);
+             $result3 = mysqli_query($con, 'SELECT* FROM giayboot') ?>
+             <?php while ($rowss = mysqli_fetch_array($result3)) : ?>
+                 <div class="item">
+                     <div class="ins-inner-box">
+                         <img src="images/<?php echo $rowss['imgsp'] ?>" alt="" />
+                         <div class="hov-in">
+                             <a href="#"><i class="fab fa-instagram"></i></a>
+                         </div>
+                     </div>
+                 </div><?php endwhile; ?>
+         </div>
+     </div>
     <!-- End Instagram Feed  -->
     <!-- thêm sản phẩm -->
     <div id="modal-wrapper" class="modal">
@@ -504,6 +201,9 @@
             </div>
 
             <div class="container">
+                <?php $conn = mysqli_connect('localhost', 'root', '', 'resign') or die($conn->connect_error);;
+                $loaisp = mysqli_query($conn, "SELECT*FROM loaisp");
+                ?>
                 <select style=" width: 90%;
     margin: 8px 26px;
     display: inline-block;
@@ -511,13 +211,9 @@
     box-sizing: border-box;
     font-size:16px;" class="form-control" name="theloai" id="theloai" required>
                     <option value="" disabled selected> Chọn Thể Loại:</option>
-                    <option>Giày Cổ Cao</option>
-                    <option>Giày Lười</option>
-                    <option>Giày Cổ Thấp</option>
-                    <option>Giày Tây</option>
-                    <option>Dây Lưng</option>
-                    <option>Ví Da</option>
-                    <option>Tất Họa Tiết</option>
+                    <?php while ($row = mysqli_fetch_array($loaisp)) { ?>
+                        <option><?php echo $row['theloai']; ?></option>
+                    <?php } ?>
 
                 </select>
                 <input type="text" placeholder="Tên Sản Phẩm" name="namesp">
@@ -535,7 +231,8 @@
     box-sizing: border-box;
     font-size:16px;" placeholder="     Mô Tả Sản Phẩm"></textarea>
                 <input type="text" placeholder="Xuất Sứ" name="xuatsusp">
-
+                <?php $conn = mysqli_connect('localhost', 'root', '', 'resign') or die($conn->connect_error);
+            $sql2 = mysqli_query($conn, "SELECT*FROM nhasxsp");?>
                 <select style=" width: 90%;
     margin: 8px 26px;
     display: inline-block;
@@ -543,11 +240,9 @@
     box-sizing: border-box;
     font-size:16px;" class="form-control" name="nhasx" id="subject" required>
                     <option value="" disabled selected> Chọn Nhà Sản Xuất:</option>
-                    <option>ZaneStore</option>
-                    <option>Dr Martin</option>
-                    <option>Convers</option>
-                    <option>Vans</option>
-                    <option>balenceaga</option>
+                    <?php while($rowsx=mysqli_fetch_array($sql2)) {?>
+                    <option><?php echo $rowsx['nhasx']; ?></option>
+                    <?php }?>
                 </select>
 
                 <button type="submit">Thêm Sản Phẩm</button>
@@ -566,7 +261,7 @@
             <div class="imgcontainer">
                 <span onclick="document.getElementById('deletesp').style.display='none'" class="close" title="Close PopUp">&times;</span>
                 <img src="images/zane.jpg" alt="Avatar" class="avatar">
-                <h1 style="text-align:center">Xóa Mặt Hàng</h1>
+                <h1 style="text-align:center">Các Mặt Hàng</h1>
             </div>
             <?php $conn = mysqli_connect('localhost', 'root', '', 'resign') or die($conn->connect_error);;
             $sql = mysqli_query($conn, "SELECT*FROM giayboot");
@@ -594,7 +289,7 @@
                                 <td name="sp"><?php echo $row['namesp'] ?></td>
                                 <td><img style="height:50px;wight:40px;" src="images/<?php echo $row['imgsp'] ?>"></td>
                                 <td><a onclick="return window.confirm(" Bạn chắc chắn muốn xóa không ?");" href="delete.php?namesp=<?php echo $row['namesp'] ?>" class="fas fa-times"> </a></td>
-                                <td><a  href="updatesp.php?namesp=<?php echo $row['namesp'] ?>"  class="fas fa-edit" aria-hidden="true"> </a></td>
+                                <td><a href="updatesp.php?namesp=<?php echo $row['namesp'] ?>" class="fas fa-edit" aria-hidden="true"> </a></td>
                             </tr>
                         </tbody><?php } ?>
                 </table>
@@ -604,6 +299,458 @@
 
     </div>
     <!-- end xóa sản phẩm -->
+
+    <!-- Liệt Kê sản phẩm -->
+    <div id="lietkesp" class="modal">
+
+        <form enctype='multipart/form-data' class="modal-content animate" action="#" method="POST">
+
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('lietkesp').style.display='none'" class="close" title="Close PopUp">&times;</span>
+                <img src="images/zane.jpg" alt="Avatar" class="avatar">
+                <h1 style="text-align:center">Liệt Kê Mặt Hàng</h1>
+            </div>
+            <?php $conn = mysqli_connect('localhost', 'root', '', 'resign') or die($conn->connect_error);;
+            $sql = mysqli_query($conn, "SELECT*FROM giayboot");
+            ?>
+            <div class="container">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col">Loại Sản Phẩm</th>
+                            <th scope="col">Tên Sản Phẩm</th>
+                            <th scope="col">Hình Ảnh</th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Số Lượng bán</th>
+                        </tr>
+                    </thead>
+                    <?php $i = 1; ?>
+                    <?php while ($row = mysqli_fetch_array($sql)) { ?>
+
+                        <tbody>
+
+                            <tr>
+                                <th><?php echo $i++ ?></th>
+                                <td><?php echo $row['loaisp'] ?></td>
+                                <td name="sp"><?php echo $row['namesp'] ?></td>
+                                <td><img style="height:50px;wight:40px;" src="images/<?php echo $row['imgsp'] ?>"></td>
+                                <td><?php
+                                    $a = $row['pricesp'];
+                                    echo $b = number_format($a, 0); ?></td>
+                                <td name="sp"><?php echo $row['bansp'] ?></td>
+                            </tr>
+                        </tbody><?php } ?>
+                </table>
+            </div>
+
+        </form>
+
+    </div>
+    <!-- end Liệt kê sản phẩm -->
+    <!-- thêm loại sản phẩm -->
+    <div id="themloaisp" class="modal">
+
+        <form enctype='multipart/form-data' class="modal-content animate" action="#" method="POST">
+
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('themloaisp').style.display='none'" class="close" title="Close PopUp">&times;</span>
+                <img src="images/zane.jpg" alt="Avatar" class="avatar">
+                <h1 style="text-align:center">Thêm loại Mặt Hàng</h1>
+            </div>
+            <?php $conn = mysqli_connect('localhost', 'root', '', 'resign') or die($conn->connect_error);
+            $sql = mysqli_query($conn, "SELECT*FROM loaisp");
+            $themsp = $_POST['themloaisp'];
+            $sp = "INSERT INTO loaisp(theloai) VALUES ('$themsp')";
+            mysqli_query($conn, $sp);
+            ?>
+            <div class="container">
+                <form action="#" method="POST">
+                    <input type="text" placeholder="Loại Sản Phẩm" name="themloaisp">
+                    <button >Thêm Loại Sản Phẩm</button>
+                </form>
+            </div>
+
+        </form>
+
+    </div>
+    <!-- end thêm loai sản phẩm -->
+    <!-- xóa loại sản phẩm -->
+    <div id="xoaloaisp" class="modal">
+
+        <form enctype='multipart/form-data' class="modal-content animate" action="#" method="POST">
+
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('xoaloaisp').style.display='none'" class="close" title="Close PopUp">&times;</span>
+                <img src="images/zane.jpg" alt="Avatar" class="avatar">
+                <h1 style="text-align:center">Xóa&Sửa loại Mặt Hàng</h1>
+            </div>
+
+            <div class="container">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col">Loại Sản Phẩm</th>
+                            <th scope="col">Xóa Sản Phẩm</th>
+                            <th scope="col">Update Sản Phẩm</th>
+                        </tr>
+                    </thead>
+                    <?php $i = 1; ?>
+                    <?php while ($row = mysqli_fetch_array($sql)) { ?>
+
+                        <tbody>
+
+                            <tr>
+                                <th><?php echo $i++ ?></th>
+                                <td><?php echo $row['theloai'] ?></td>
+                                <td><a href="deleteloaisp.php?theloai=<?php echo $row['theloai']; ?>" class="fas fa-times"> </a></td>
+                                <td><a href="updateloaisp.php?theloai=<?php echo $row['theloai'];?>" class="fas fa-edit" aria-hidden="true"> </a></td>
+
+                            </tr>
+                        </tbody><?php } ?>
+                </table>
+        </form>
+    </div>
+
+    </form>
+
+    </div>
+    <!-- end xóa loai sản phẩm -->
+    <!-- liệt kê loại sản phẩm -->
+    <div id="lietkeloaisp" class="modal">
+
+        <form enctype='multipart/form-data' class="modal-content animate" action="#" method="POST">
+
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('lietkeloaisp').style.display='none'" class="close" title="Close PopUp">&times;</span>
+                <img src="images/zane.jpg" alt="Avatar" class="avatar">
+                <h1 style="text-align:center">Liệt kê loại Mặt Hàng</h1>
+            </div>
+
+            <div class="container">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col">Loại Sản Phẩm</th>
+                           
+                        </tr>
+                    </thead>
+                    <?php $i = 1; ?>
+                    <?php $sqli = mysqli_query($conn, "SELECT*FROM loaisp"); ?>
+                    <?php while ($row = mysqli_fetch_array($sqli)) { ?>
+
+                        <tbody>
+
+                            <tr>
+                                <th><?php echo $i++ ?></th>
+                                <td><?php echo $row['theloai'] ?></td>
+                            </tr>
+                        </tbody><?php } ?>
+                </table>
+        </form>
+    </div>
+
+    </form>
+
+    </div>
+    <!-- end liệt kê loai sản phẩm -->
+    <!-- thêm nhà sản xuất sản phẩm -->
+    <div id="themnhasxsp" class="modal">
+
+        <form enctype='multipart/form-data' class="modal-content animate" action="#" method="POST">
+
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('themnhasxsp').style.display='none'" class="close" title="Close PopUp">&times;</span>
+                <img src="images/zane.jpg" alt="Avatar" class="avatar">
+                <h1 style="text-align:center">Thêm Nhà Sản Xuất</h1>
+            </div>
+            <?php $conn = mysqli_connect('localhost', 'root', '', 'resign') or die($conn->connect_error);
+            $sql = mysqli_query($conn, "SELECT*FROM nhasxsp");
+            $themnhasx = $_POST['themnhasxsp'];
+            $sp = "INSERT INTO nhasxsp(nhasx) VALUES ('$themnhasx')";
+            mysqli_query($conn, $sp);
+            ?>
+            <div class="container">
+                <form action="#" method="POST">
+                    <input type="text" placeholder="Nhà sản xuất" name="themnhasxsp">
+                    <button >Thêm nhà sản xuất Sản Phẩm</button>
+                </form>
+            </div>
+
+        </form>
+
+    </div>
+    <!-- end thêm nhà sản xuất sản phẩm -->
+    <!-- xóa nhà sản xuất sản phẩm -->
+    <div id="xoanhasxsp" class="modal">
+
+        <form enctype='multipart/form-data' class="modal-content animate" action="#" method="POST">
+
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('xoanhasxsp').style.display='none'" class="close" title="Close PopUp">&times;</span>
+                <img src="images/zane.jpg" alt="Avatar" class="avatar">
+                <h1 style="text-align:center">Xóa&Sửa Nhà sản xuất</h1>
+            </div>
+
+            <div class="container">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col">Loại Sản Phẩm</th>
+                            <th scope="col">Xóa Sản Phẩm</th>
+                            <th scope="col">Update Sản Phẩm</th>
+                        </tr>
+                    </thead>
+                    <?php $i = 1; ?>
+                    <?php while ($row = mysqli_fetch_array($sql)) { ?>
+
+                        <tbody>
+
+                            <tr>
+                                <th><?php echo $i++ ?></th>
+                                <td><?php echo $row['nhasx'] ?></td>
+                                <td><a href="deletenhasxsp.php?nhasx=<?php echo $row['nhasx']; ?>" class="fas fa-times"> </a></td>
+                                <td><a href="updatenhasxsp.php?nhasx=<?php echo $row['nhasx'];?>" class="fas fa-edit" aria-hidden="true"> </a></td>
+
+                            </tr>
+                        </tbody><?php } ?>
+                </table>
+        </form>
+    </div>
+
+    </form>
+
+    </div>
+    <!-- end xóa nhà sản xuất sản phẩm -->
+        <!-- liệt kê nhà sản xuất sản phẩm -->
+        <div id="lietkenhasxsp" class="modal">
+
+<form enctype='multipart/form-data' class="modal-content animate" action="#" method="POST">
+
+    <div class="imgcontainer">
+        <span onclick="document.getElementById('lietkenhasxsp').style.display='none'" class="close" title="Close PopUp">&times;</span>
+        <img src="images/zane.jpg" alt="Avatar" class="avatar">
+        <h1 style="text-align:center">Liệt kê Nhà sản xuất</h1>
+    </div>
+
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Loại Sản Phẩm</th>
+                   
+                </tr>
+            </thead>
+            <?php $i = 1; ?>
+            <?php $sqli = mysqli_query($conn, "SELECT*FROM nhasxsp"); ?>
+            <?php while ($row = mysqli_fetch_array($sqli)) { ?>
+
+                <tbody>
+
+                    <tr>
+                        <th><?php echo $i++ ?></th>
+                        <td><?php echo $row['nhasx'] ?></td>
+                    </tr>
+                </tbody><?php } ?>
+        </table>
+</form>
+</div>
+
+</form>
+
+</div>
+<!-- end liệt kê nhà sản xuất sản phẩm -->
+ <!-- thêm người dùng -->
+ <div id="themnguoidung" class="modal">
+
+<form enctype='multipart/form-data' class="modal-content animate" action="addmember.php" method="POST">
+
+    <div class="imgcontainer">
+        <span onclick="document.getElementById('themnguoidung').style.display='none'" class="close" title="Close PopUp">&times;</span>
+        <img src="images/zane.jpg" alt="Avatar" class="avatar">
+        <h1 style="text-align:center">Thêm Người Dùng</h1>
+    </div>
+ 
+    <div class="container">
+    <form  action="addmember.php" method="POST">
+					<?php 
+					if(@$_GET['Empty']==true){
+						?>
+							<div style="color: brown; text-align:center"><?php echo $_GET['Empty']?></div>
+						<?php
+					}
+					?>
+					<div class="wrap-input100 validate-input m-b-23" data-validate="Your Name is reauired">
+
+						<span class="label-input100">Your Name</span>
+						<input class="input100" type="text" name="title" placeholder="Type Your Name" required>
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+					<div >
+						<span class="label-input100">Address</span>
+						<select class="form-control" name="flatform">
+							<option value="An Giang">An Giang
+							<option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu
+							<option value="Bắc Giang">Bắc Giang
+							<option value="Bắc Kạn">Bắc Kạn
+							<option value="Bạc Liêu">Bạc Liêu
+							<option value="Bắc Ninh">Bắc Ninh
+							<option value="Bến Tre">Bến Tre
+							<option value="Bình Định">Bình Định
+							<option value="Bình Dương">Bình Dương
+							<option value="Bình Phước">Bình Phước
+							<option value="Bình Thuận">Bình Thuận
+							<option value="Bình Thuận">Bình Thuận
+							<option value="Cà Mau">Cà Mau
+							<option value="Cao Bằng">Cao Bằng
+							<option value="Đắk Lắk">Đắk Lắk
+							<option value="Đắk Nông">Đắk Nông
+							<option value="Điện Biên">Điện Biên
+							<option value="Đồng Nai">Đồng Nai
+							<option value="Đồng Tháp">Đồng Tháp
+							<option value="Đồng Tháp">Đồng Tháp
+							<option value="Gia Lai">Gia Lai
+							<option value="Hà Giang">Hà Giang
+							<option value="Hà Nam">Hà Nam
+							<option value="Hà Tĩnh">Hà Tĩnh
+							<option value="Hải Dương">Hải Dương
+							<option value="Hậu Giang">Hậu Giang
+							<option value="Hòa Bình">Hòa Bình
+							<option value="Hưng Yên">Hưng Yên
+							<option value="Khánh Hòa">Khánh Hòa
+							<option value="Kiên Giang">Kiên Giang
+							<option value="Kon Tum">Kon Tum
+							<option value="Lai Châu">Lai Châu
+							<option value="Lâm Đồng">Lâm Đồng
+							<option value="Lạng Sơn">Lạng Sơn
+							<option value="Lào Cai">Lào Cai
+							<option value="Long An">Long An
+							<option value="Nam Định">Nam Định
+							<option value="Nghệ An">Nghệ An
+							<option value="Ninh Bình">Ninh Bình
+							<option value="Ninh Thuận">Ninh Thuận
+							<option value="Phú Thọ">Phú Thọ
+							<option value="Quảng Bình">Quảng Bình
+							<option value="Quảng Bình">Quảng Bình
+							<option value="Quảng Ngãi">Quảng Ngãi
+							<option value="Quảng Ninh">Quảng Ninh
+							<option value="Quảng Trị">Quảng Trị
+							<option value="Sóc Trăng">Sóc Trăng
+							<option value="Sơn La">Sơn La
+							<option value="Tây Ninh">Tây Ninh
+							<option value="Thái Bình">Thái Bình
+							<option value="Thái Nguyên">Thái Nguyên
+							<option value="Thanh Hóa">Thanh Hóa
+							<option value="Thừa Thiên Huế">Thừa Thiên Huế
+							<option value="Tiền Giang">Tiền Giang
+							<option value="Trà Vinh">Trà Vinh
+							<option value="Tuyên Quang">Tuyên Quang
+							<option value="Vĩnh Long">Vĩnh Long
+							<option value="Vĩnh Phúc">Vĩnh Phúc
+							<option value="Yên Bái">Yên Bái
+							<option value="Phú Yên">Phú Yên
+							<option value="Tp.Cần Thơ">Tp.Cần Thơ
+							<option value="Tp.Đà Nẵng">Tp.Đà Nẵng
+							<option value="Tp.Hải Phòng">Tp.Hải Phòng
+							<option value="Tp.Hà Nội">Tp.Hà Nội
+							<option value="TP  HCM">TP HCM
+						</select>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Username is required">
+						<span class="label-input100">User Name</span>
+						<input class="input100" type="text" name="username" placeholder="Type your User Name" required>
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<span class="label-input100">Password</span>
+						<input class="input100" type="password" name="psw" placeholder="Type your password" required>
+						<span class="focus-input100" data-symbol="&#xf190;"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Enter Password is required">
+						<span class="label-input100">Enter Password</span>
+						<input class="input100" type="password" name="psw2" placeholder="Type your Enter password" required>
+						<span class="focus-input100" data-symbol="&#xf190;"></span>
+					</div>
+					
+					
+					<div class="text-right p-t-8 p-b-31">
+
+					</div>
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button type="submit" name="submit" class="login100-form-btn">
+								Thêm Người Dùng
+							</button>
+						</div>
+					</div>
+
+					<div class="flex-col-c p-t-155">
+						<span class="txt1 p-b-17">
+							Or You have account
+						</span>
+
+						<a href="login.php" class="txt2">
+							Backup Login
+						</a>
+					</div>
+    </div>
+
+</form>
+
+</div>
+<!-- end thêm người dùng -->
+ <!-- xóa Người dùng  -->
+ <div id="deletemember" class="modal">
+
+<form enctype='multipart/form-data' class="modal-content animate" action="#" method="POST">
+
+    <div class="imgcontainer">
+        <span onclick="document.getElementById('deletemember').style.display='none'" class="close" title="Close PopUp">&times;</span>
+        <img src="images/zane.jpg" alt="Avatar" class="avatar">
+        <h1 style="text-align:center">Các Mặt Hàng</h1>
+    </div>
+    <?php 
+    $sqlmb = mysqli_query($conn, "SELECT*FROM dangky");
+    ?>
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Họ Tên</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Xóa</th>
+                    <th scope="col">Sửa</th>
+                </tr>
+            </thead>
+            <?php $i = 1; ?>
+            <?php while ($row = mysqli_fetch_array($sqlmb)) { ?>
+
+                <tbody>
+
+                    <tr>
+                        <th><?php echo $i++ ?></th>
+                        <th><?php echo $row['hoten'] ?></th>
+                        <td name="sp"><?php echo $row['username'] ?></td>
+                        <th><?php echo $row['pasw'] ?></th>
+                        <td><a href="delmember.php?username=<?php echo $row['username'] ?>" class="fas fa-times"> </a></td>
+                        <td><a href="updatemb.php?username=<?php echo $row['username'] ?>" class="fas fa-edit" aria-hidden="true"> </a></td>
+                    </tr>
+                </tbody><?php } ?>
+        </table>
+    </div>
+
+</form>
+
+</div>
+<!-- end xóa người dùng -->
     <!-- Start Footer  -->
     <footer>
         <div class="footer-main">
@@ -716,6 +863,60 @@
     <script>
         function muticlick1() {
             document.getElementById('deletesp').style.display = 'block';
+            document.getElementById('headerid').style.display = 'none';
+        }
+    </script>
+    <script>
+        function muticlick2() {
+            document.getElementById('lietkesp').style.display = 'block';
+            document.getElementById('headerid').style.display = 'none';
+        }
+    </script>
+    <script>
+        function muticlickloaisp() {
+            document.getElementById('themloaisp').style.display = 'block';
+            document.getElementById('headerid').style.display = 'none';
+        }
+    </script>
+    <script>
+        function muticlickxoaloaisp() {
+            document.getElementById('xoaloaisp').style.display = 'block';
+            document.getElementById('headerid').style.display = 'none';
+        }
+    </script>
+      <script>
+        function muticlicklietkeloaisp() {
+            document.getElementById('lietkeloaisp').style.display = 'block';
+            document.getElementById('headerid').style.display = 'none';
+        }
+    </script>
+     <script>
+        function muticlicknhasx() {
+            document.getElementById('themnhasxsp').style.display = 'block';
+            document.getElementById('headerid').style.display = 'none';
+        }
+    </script>
+    <script>
+        function muticlickxoanhasx() {
+            document.getElementById('xoanhasxsp').style.display = 'block';
+            document.getElementById('headerid').style.display = 'none';
+        }
+    </script>
+    <script>
+        function muticlickkietkenhasx() {
+            document.getElementById('lietkenhasxsp').style.display = 'block';
+            document.getElementById('headerid').style.display = 'none';
+        }
+    </script>
+      <script>
+        function muticlicknguoidung() {
+            document.getElementById('themnguoidung').style.display = 'block';
+            document.getElementById('headerid').style.display = 'none';
+        }
+    </script>
+      <script>
+        function muticlickdelmember() {
+            document.getElementById('deletemember').style.display = 'block';
             document.getElementById('headerid').style.display = 'none';
         }
     </script>
